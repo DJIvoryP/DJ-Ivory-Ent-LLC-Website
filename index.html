@@ -3,906 +3,184 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DJ Ivory Ent LLC — Hosts &amp; DJs for Every Room</title>
-<meta name="description" content="DJ Ivory Ent LLC books and manages Hosts and DJs for private events, corporate events, community events, and club residencies.">
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<title>DJ Ivory Ent LLC — Bookings, Hosts &amp; DJs</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>
-  :root{
-    --white:#ffffff;
-    --ice:#EEF3FC;
-    --ice-2:#E1EAFA;
-    --royal:#0E2A6B;
-    --royal-deep:#081A46;
-    --electric:#2F6FED;
-    --electric-2:#5C8CFF;
-    --line: rgba(14,42,107,0.14);
-    --shadow: 0 20px 50px -25px rgba(14,42,107,0.45);
-    --radius: 18px;
-    --maxw: 1180px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--white);
-    color:var(--royal-deep);
-    font-family:'Manrope', sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,.display{
-    font-family:'Anton', sans-serif;
-    font-weight:400;
-    letter-spacing:0.01em;
-    text-transform:uppercase;
-    line-height:0.96;
-    margin:0;
-    color:var(--royal);
-  }
-  .eyebrow{
-    font-family:'Space Mono', monospace;
-    font-size:0.72rem;
-    letter-spacing:0.22em;
-    text-transform:uppercase;
-    color:var(--electric);
-    font-weight:700;
-  }
-  a{color:inherit;text-decoration:none;}
-  img{max-width:100%;display:block;}
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
-  button{font-family:inherit; cursor:pointer;}
-
-  /* Crown divider signature element */
-  .crown-divider{
-    display:flex; align-items:center; gap:18px;
-    margin: 64px 0 40px;
-  }
-  .crown-divider .rule{flex:1; height:1px; background:var(--line);}
-  .crown-divider svg{width:26px; height:18px; flex-shrink:0;}
-
-  /* Header */
-  header{
-    position:sticky; top:0; z-index:100;
-    background:var(--royal);
-    border-bottom: 3px solid var(--electric);
-  }
-  .nav-inner{
-    max-width:var(--maxw); margin:0 auto; padding:0 28px;
-    display:flex; align-items:center; justify-content:space-between;
-    height:78px;
-  }
-  .brand{display:flex; align-items:center; gap:12px;}
-  .brand img{height:46px; width:auto;}
-  nav.links{display:flex; align-items:center; gap:6px;}
-  nav.links button{
-    background:none; border:none; color:#DCE6FB;
-    font-size:0.82rem; letter-spacing:0.05em; text-transform:uppercase;
-    font-weight:700; padding:10px 14px; border-radius:8px;
-    transition: all .15s ease;
-  }
-  nav.links button:hover{background:rgba(255,255,255,0.08); color:#fff;}
-  nav.links button.active{color:#fff; background:rgba(255,255,255,0.12);}
-  .cta-btn{
-    background:var(--electric); color:#fff !important;
-    padding:11px 20px; border-radius:999px; font-weight:800;
-    font-size:0.82rem; letter-spacing:0.04em; text-transform:uppercase;
-    border:none; display:inline-flex; align-items:center; gap:8px;
-    transition: transform .15s ease, background .15s ease;
-    white-space:nowrap;
-  }
-  .cta-btn:hover{background:var(--electric-2); transform:translateY(-1px);}
-  .burger{display:none; background:none; border:none; padding:8px;}
-  .burger span{display:block; width:24px; height:2px; background:#fff; margin:5px 0;}
-
-  /* Page sections */
-  .page{display:none;}
-  .page.active{display:block; animation:fadein .35s ease;}
-  @keyframes fadein{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
-
-  /* HERO */
-  .hero{
-    background: radial-gradient(1200px 500px at 15% -10%, var(--ice) 0%, var(--white) 55%);
-    padding: 88px 0 40px;
-    position:relative;
-    overflow:hidden;
-  }
-  .hero-grid{
-    display:grid; grid-template-columns: 1.15fr 0.85fr; gap:48px; align-items:center;
-  }
-  .hero .eyebrow{margin-bottom:18px; display:block;}
-  .hero h1{font-size: clamp(2.6rem, 5.6vw, 4.6rem);}
-  .hero h1 .accent{color:var(--electric);}
-  .hero p.lede{
-    font-size:1.08rem; color:#3A4C74; max-width:520px; margin:22px 0 30px; line-height:1.55;
-  }
-  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
-  .btn-outline{
-    border:2px solid var(--royal); color:var(--royal); padding:11px 22px;
-    border-radius:999px; font-weight:800; font-size:0.82rem; letter-spacing:0.04em;
-    text-transform:uppercase; transition: all .15s ease;
-  }
-  .btn-outline:hover{background:var(--royal); color:#fff;}
-  .crown-art{
-    background:var(--royal); border-radius:28px; padding:36px;
-    box-shadow:var(--shadow); position:relative;
-  }
-  .crown-art img{width:100%; height:auto;}
-  .crown-art .tape{
-    position:absolute; top:-14px; left:26px;
-    background:var(--electric); color:#fff; font-family:'Space Mono',monospace;
-    font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase;
-    padding:7px 14px; border-radius:999px; box-shadow:0 8px 20px -6px rgba(47,111,237,0.6);
-  }
-
-  .service-tags{
-    display:flex; flex-wrap:wrap; gap:12px; margin-top:56px;
-  }
-  .service-tag{
-    flex:1; min-width:150px;
-    background:var(--white); border:1.5px solid var(--line); border-radius:14px;
-    padding:18px 18px 16px; transition: border-color .15s ease, transform .15s ease;
-  }
-  .service-tag:hover{border-color:var(--electric); transform:translateY(-3px);}
-  .service-tag .mark{color:var(--electric); font-family:'Space Mono',monospace; font-size:0.72rem; font-weight:700;}
-  .service-tag h3{font-size:1.05rem; margin-top:8px; color:var(--royal);}
-
-  /* Section generic */
-  section.block{padding:20px 0 10px;}
-  .section-head{max-width:640px; margin-bottom:36px;}
-  .section-head h2{font-size:clamp(2rem, 3.6vw, 2.8rem); margin-top:10px;}
-  .section-head p{color:#3A4C74; font-size:1.02rem; line-height:1.6; margin-top:14px;}
-
-  /* Highlights strip on home */
-  .strip{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:20px;
-  }
-  .strip-card{
-    aspect-ratio:4/5; border-radius:14px; position:relative; overflow:hidden;
-    display:flex; align-items:flex-end; padding:16px;
-    color:#fff; font-family:'Space Mono',monospace; font-size:0.76rem; letter-spacing:0.04em;
-  }
-  .strip-card::before{content:''; position:absolute; inset:0; opacity:0.92;}
-  .strip-card span{position:relative; z-index:1; text-transform:uppercase; font-weight:700;}
-  .strip-card .g1::before,.strip-card.g1::before{background:linear-gradient(155deg,#0E2A6B,#2F6FED);}
-  .g1::before{background:linear-gradient(155deg,#0E2A6B,#2F6FED);}
-  .g2::before{background:linear-gradient(155deg,#081A46,#12306B);}
-  .g3::before{background:linear-gradient(155deg,#2F6FED,#5C8CFF);}
-  .g4::before{background:linear-gradient(155deg,#12306B,#0E2A6B);}
-
-  footer{
-    background:var(--royal-deep); color:#B9C8EE; margin-top:90px;
-    padding:56px 0 26px;
-  }
-  .footer-grid{display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr; gap:36px;}
-  .footer-brand{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
-  .footer-brand img{height:38px;}
-  footer h4{
-    font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.14em;
-    text-transform:uppercase; color:#5C8CFF; margin-bottom:14px;
-  }
-  footer ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:9px;}
-  footer a{color:#B9C8EE; font-size:0.92rem; transition:color .15s ease;}
-  footer a:hover{color:#fff;}
-  footer p{font-size:0.92rem; line-height:1.6; color:#8FA3D6; max-width:280px;}
-  .foot-bottom{
-    margin-top:44px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.08);
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-    font-size:0.8rem; color:#6C82B8;
-  }
-  .social-row{display:flex; gap:10px;}
-  .social-row a{
-    width:38px; height:38px; border-radius:999px; border:1px solid rgba(255,255,255,0.15);
-    display:flex; align-items:center; justify-content:center; transition: all .15s ease;
-  }
-  .social-row a:hover{background:var(--electric); border-color:var(--electric);}
-
-  /* ABOUT page */
-  .about-hero{display:grid; grid-template-columns:0.9fr 1.1fr; gap:50px; align-items:center;}
-  .founder-card{
-    background:var(--royal); border-radius:24px; padding:34px; color:#fff;
-    box-shadow:var(--shadow);
-  }
-  .founder-card img{height:60px; margin-bottom:18px;}
-  .founder-card .role{font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:#8FA9F5;}
-  .founder-card h3{color:#fff; font-size:1.5rem; margin-top:8px;}
-  .founder-card p{color:#C7D5F6; font-size:0.94rem; line-height:1.6; margin-top:14px;}
-  .about-copy p{color:#3A4C74; font-size:1.03rem; line-height:1.7; margin-bottom:16px;}
-  .stat-row{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:38px;}
-  .stat{border-top:3px solid var(--electric); padding-top:12px;}
-  .stat .num{font-family:'Anton',sans-serif; font-size:2.2rem; color:var(--royal);}
-  .stat .lbl{font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:#5C6E97;}
-
-  .service-detail-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
-  .service-detail{
-    border:1.5px solid var(--line); border-radius:16px; padding:24px 20px; background:var(--white);
-  }
-  .service-detail .icon{
-    width:44px; height:44px; border-radius:10px; background:var(--ice);
-    display:flex; align-items:center; justify-content:center; margin-bottom:16px;
-    color:var(--electric);
-  }
-  .service-detail h3{font-size:1.02rem; color:var(--royal); margin-bottom:8px;}
-  .service-detail p{font-size:0.88rem; color:#5C6E97; line-height:1.55;}
-
-  .egg{
-    margin-top:70px; background:var(--ice); border-radius:20px; padding:36px 40px;
-    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
-  }
-  .egg .eyebrow{margin-bottom:6px;}
-  .egg h3{font-size:1.3rem; color:var(--royal);}
-  .egg p{color:#3A4C74; font-size:0.92rem; margin-top:6px; max-width:420px;}
-
-  /* HIGHLIGHTS page */
-  .filter-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:30px;}
-  .filter-pill{
-    border:1.5px solid var(--line); background:var(--white); padding:9px 18px; border-radius:999px;
-    font-family:'Space Mono',monospace; font-size:0.74rem; letter-spacing:0.05em; text-transform:uppercase;
-    font-weight:700; color:var(--royal); transition:all .15s ease;
-  }
-  .filter-pill.active, .filter-pill:hover{background:var(--royal); color:#fff; border-color:var(--royal);}
-  .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
-  .gal-item{
-    border-radius:16px; overflow:hidden; position:relative; aspect-ratio:3/4;
-    display:flex; align-items:flex-end; padding:18px; color:#fff;
-  }
-  .gal-item::before{content:''; position:absolute; inset:0;}
-  .gal-item .content{position:relative; z-index:1;}
-  .gal-item .tag{font-family:'Space Mono',monospace; font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; opacity:0.85;}
-  .gal-item .title{font-family:'Anton',sans-serif; font-size:1.15rem; text-transform:uppercase; margin-top:4px;}
-  .gal-item.p1::before{background:linear-gradient(160deg,#0E2A6B,#2F6FED);}
-  .gal-item.p2::before{background:linear-gradient(160deg,#081A46,#12306B);}
-  .gal-item.p3::before{background:linear-gradient(160deg,#2F6FED,#5C8CFF);}
-  .gal-item.p4::before{background:linear-gradient(160deg,#12306B,#0E2A6B);}
-  .gal-item.p5::before{background:linear-gradient(160deg,#5C8CFF,#0E2A6B);}
-  .gal-item.p6::before{background:linear-gradient(160deg,#0E2A6B,#081A46);}
-  .upload-note{
-    margin-top:32px; border:1.5px dashed var(--line); border-radius:16px; padding:26px;
-    text-align:center; color:#5C6E97; font-size:0.9rem;
-  }
-
-  /* ROSTER page */
-  .roster-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
-  .roster-card{
-    border:1.5px solid var(--line); border-radius:20px; overflow:hidden; background:var(--white);
-    transition:transform .15s ease, box-shadow .15s ease;
-  }
-  .roster-card:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
-  .roster-photo{
-    aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
-    font-family:'Anton',sans-serif; font-size:2.4rem; color:#fff;
-  }
-  .roster-card .rp1{background:linear-gradient(155deg,#0E2A6B,#2F6FED);}
-  .roster-card .rp2{background:linear-gradient(155deg,#12306B,#5C8CFF);}
-  .roster-card .rp3{background:linear-gradient(155deg,#081A46,#2F6FED);}
-  .roster-info{padding:20px;}
-  .roster-info h3{color:var(--royal); font-size:1.15rem;}
-  .roster-info .specialty{font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--electric); margin-top:6px;}
-  .roster-info p{font-size:0.88rem; color:#5C6E97; margin-top:10px; line-height:1.55;}
-  .avail{
-    display:inline-flex; align-items:center; gap:6px; margin-top:14px;
-    font-size:0.78rem; font-weight:700; color:#1E8E5A;
-  }
-  .avail .dot{width:7px; height:7px; border-radius:50%; background:#1E8E5A;}
-
-  /* BOOK NOW page */
-  .book-grid{display:grid; grid-template-columns:1fr 1.3fr; gap:50px; align-items:flex-start;}
-  .book-side h2{font-size:2.2rem;}
-  .book-side p{color:#3A4C74; margin-top:16px; line-height:1.6;}
-  .book-steps{margin-top:32px; display:flex; flex-direction:column; gap:20px;}
-  .book-step{display:flex; gap:14px;}
-  .book-step .num{
-    font-family:'Anton',sans-serif; color:var(--electric); font-size:1.3rem; flex-shrink:0; width:34px;
-  }
-  .book-step h4{color:var(--royal); font-size:0.98rem; margin-bottom:4px;}
-  .book-step p{font-size:0.86rem; margin-top:0; color:#5C6E97;}
-
-  form.booking{
-    background:var(--ice); border-radius:22px; padding:36px;
-  }
-  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
-  .field{display:flex; flex-direction:column; gap:7px;}
-  .field.full{grid-column:1/-1;}
-  label{
-    font-family:'Space Mono',monospace; font-size:0.68rem; letter-spacing:0.08em;
-    text-transform:uppercase; color:var(--royal); font-weight:700;
-  }
-  input, select, textarea{
-    border:1.5px solid var(--line); border-radius:10px; padding:12px 14px;
-    font-family:'Manrope',sans-serif; font-size:0.94rem; color:var(--royal-deep);
-    background:#fff; outline:none; transition:border-color .15s ease;
-  }
-  input:focus, select:focus, textarea:focus{border-color:var(--electric);}
-  textarea{resize:vertical; min-height:100px;}
-  .submit-btn{
-    background:var(--royal); color:#fff; border:none; padding:15px 26px;
-    border-radius:999px; font-weight:800; font-size:0.86rem; letter-spacing:0.04em;
-    text-transform:uppercase; width:100%; margin-top:6px; transition:background .15s ease;
-  }
-  .submit-btn:hover{background:var(--electric);}
-  .form-note{font-size:0.78rem; color:#5C6E97; margin-top:14px; text-align:center;}
-  .success-msg{
-    display:none; background:#E7F6EE; border:1.5px solid #1E8E5A; color:#146B42;
-    padding:16px 18px; border-radius:12px; font-size:0.9rem; margin-bottom:16px; font-weight:600;
-  }
-
-  /* CONTACT page */
-  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:50px;}
-  .contact-info-card{
-    background:var(--royal); border-radius:22px; padding:36px; color:#fff;
-  }
-  .contact-info-card h3{color:#fff; font-size:1.4rem; margin-bottom:20px;}
-  .contact-line{display:flex; gap:14px; margin-bottom:20px; align-items:flex-start;}
-  .contact-line .ic{color:var(--electric-2); flex-shrink:0; margin-top:2px;}
-  .contact-line .lbl2{font-family:'Space Mono',monospace; font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; color:#8FA9F5;}
-  .contact-line .val{font-size:0.96rem; margin-top:3px; color:#E4EBFA;}
-  .social-block{margin-top:28px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.14);}
-  .social-block .eyebrow{color:#8FA9F5;}
-  .social-block .social-row{margin-top:14px;}
-  .social-block .social-row a{border-color:rgba(255,255,255,0.25);}
-
-  @media (max-width: 900px){
-    .hero-grid, .about-hero, .book-grid, .contact-grid{grid-template-columns:1fr;}
-    .strip, .roster-grid, .gallery, .service-detail-grid{grid-template-columns:repeat(2,1fr);}
-    .footer-grid{grid-template-columns:1fr 1fr;}
-    .stat-row{grid-template-columns:1fr;}
-    nav.links{display:none;}
-    .burger{display:block;}
-    .form-row{grid-template-columns:1fr;}
-  }
-  @media (max-width:560px){
-    .strip, .roster-grid, .gallery, .service-detail-grid{grid-template-columns:1fr;}
-    .footer-grid{grid-template-columns:1fr;}
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    .page.active{animation:none;}
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <div class="nav-inner">
-    <a href="#home" class="brand" onclick="go('home')">
-      <img src="assets/logo-white-transparent.png" alt="DJ Ivory Ent LLC">
-    </a>
-    <nav class="links" id="navLinks">
-      <button data-page="home" onclick="go('home')">Home</button>
-      <button data-page="about" onclick="go('about')">About</button>
-      <button data-page="highlights" onclick="go('highlights')">Highlights</button>
-      <button data-page="roster" onclick="go('roster')">Roster</button>
-      <button data-page="contact" onclick="go('contact')">Contact</button>
-      <button class="cta-btn" onclick="go('book')" style="margin-left:8px;">Book Now</button>
-    </nav>
-    <button class="burger" id="burgerBtn" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="logo">DJ <span class="accent">Ivory</span> Ent</a>
+    <input type="checkbox" id="nav-check" class="nav-check">
+    <label for="nav-check" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+    <div class="nav-links">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="event-highlight.html">Event Highlight</a>
+      <a href="roster.html">Roster</a>
+      <a href="book.html">Book Now</a>
+      <a href="contact.html">Contact</a>
+      <a href="dashboard.html">Dashboard</a>
+    </div>
+    <a href="book.html" class="nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow mono">DJ Ivory Ent LLC</div>
+      <h1>Booking and management for <em>Hosts &amp; DJs</em> who show up right.</h1>
+      <p>We schedule and manage Hosts and DJs for private events, corporate functions, community programs, and club residencies — one reliable point of contact from first inquiry to load-out.</p>
+      <div class="hero-actions">
+        <a href="book.html" class="btn-primary">Book Now</a>
+        <a href="roster.html" class="btn-secondary">View Roster</a>
+      </div>
+    </div>
+    <div class="eq-panel" aria-hidden="true">
+      <div class="eq-bar" style="height:100%; animation-delay:0s;"></div>
+      <div class="eq-bar" style="height:100%; animation-delay:0.15s;"></div>
+      <div class="eq-bar" style="height:100%; animation-delay:0.3s;"></div>
+      <div class="eq-bar" style="height:100%; animation-delay:0.45s;"></div>
+      <div class="eq-bar" style="height:100%; animation-delay:0.6s;"></div>
+      <div class="eq-bar" style="height:100%; animation-delay:0.75s;"></div>
+      <div class="eq-bar" style="height:100%; animation-delay:0.9s;"></div>
+      <div class="eq-bar" style="height:100%; animation-delay:0.4s;"></div>
+      <div class="eq-bar" style="height:100%; animation-delay:0.2s;"></div>
+      <div class="eq-bar" style="height:100%; animation-delay:0.65s;"></div>
+    </div>
   </div>
 </header>
 
-<!-- mobile menu -->
-<div id="mobileMenu" style="display:none; background:var(--royal); padding:10px 28px 20px; flex-direction:column; gap:4px;">
-  <button data-page="home" onclick="go('home')" style="text-align:left;">Home</button>
-  <button data-page="about" onclick="go('about')" style="text-align:left;">About</button>
-  <button data-page="highlights" onclick="go('highlights')" style="text-align:left;">Highlights</button>
-  <button data-page="roster" onclick="go('roster')" style="text-align:left;">Roster</button>
-  <button data-page="contact" onclick="go('contact')" style="text-align:left;">Contact</button>
-  <button data-page="book" onclick="go('book')" style="text-align:left;">Book Now</button>
+<div class="keys-divider" id="keys"></div>
+
+<section class="light section-pad">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow mono">Where We Book</div>
+      <h2>Four settings. One booking process.</h2>
+    </div>
+  </div>
+  <div class="card-grid">
+    <div class="service-card">
+      <span class="service-num mono">Private</span>
+      <h3>Private Events</h3>
+      <p>Weddings, birthdays, and private parties — a Host or DJ matched to the size and tone of the room.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num mono">Corporate</span>
+      <h3>Corporate Events</h3>
+      <p>Product launches, holiday parties, and company milestones handled with a professional, on-time crew.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num mono">Community</span>
+      <h3>Community Programs</h3>
+      <p>City events, school functions, and community programs staffed with Hosts and DJs invested in the room.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num mono">Residencies</span>
+      <h3>Club Residencies</h3>
+      <p>Ongoing club nights and venue residencies — consistent DJ scheduling week over week.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow mono">How Booking Works</div>
+      <h2 style="color:var(--ivory-soft);">Four steps, one contact.</h2>
+    </div>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="eyebrow mono">Inquire</div>
+        <h3>Tell us the date</h3>
+        <p>Share your event type, date, and venue on the Book Now page.</p>
+      </div>
+      <div class="flow-step">
+        <div class="eyebrow mono">Match</div>
+        <h3>We assign a Host or DJ</h3>
+        <p>Based on your event type and any specific request from the roster.</p>
+      </div>
+      <div class="flow-step">
+        <div class="eyebrow mono">Confirm</div>
+        <h3>Lock the details</h3>
+        <p>We confirm availability, budget, and send a booking agreement.</p>
+      </div>
+      <div class="flow-step">
+        <div class="eyebrow mono">Perform</div>
+        <h3>They show up and deliver</h3>
+        <p>Your Host or DJ arrives early, sets up, and runs the event start to finish.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-item">
+      <div class="num">4</div>
+      <div class="lbl mono">Event Categories</div>
+    </div>
+    <div class="strip-item">
+      <div class="num">1</div>
+      <div class="lbl mono">Point of Contact</div>
+    </div>
+    <div class="strip-item">
+      <div class="num">LLC</div>
+      <div class="lbl mono">Licensed Business</div>
+    </div>
+    <div class="strip-item">
+      <div class="num">MIA</div>
+      <div class="lbl mono">Based in Miami, FL</div>
+    </div>
+  </div>
 </div>
 
-<main class="wrap">
-
-  <!-- HOME -->
-  <section class="page active" id="page-home">
-    <div class="hero">
-      <div class="hero-grid">
-        <div>
-          <span class="eyebrow">Miami, FL · Private / Corporate / Community / Residency</span>
-          <h1>Someone has<br>to run the room.<br><span class="accent">That's us.</span></h1>
-          <p class="lede">DJ Ivory Ent LLC books and manages Hosts and DJs for events that can't afford a dull moment — from private celebrations to corporate stages to club residencies.</p>
-          <div class="hero-ctas">
-            <button class="cta-btn" onclick="go('book')">Book a Host or DJ</button>
-            <a class="btn-outline" href="#" onclick="go('roster')">See the Roster</a>
-          </div>
-        </div>
-        <div class="crown-art">
-          <span class="tape">Est. Miami</span>
-          <img src="assets/logo-white-transparent.png" alt="DJ Ivory crown logo">
-        </div>
-      </div>
-
-      <div class="service-tags">
-        <div class="service-tag">
-          <span class="mark">01 · PRIVATE</span>
-          <h3>Weddings &amp; Private Events</h3>
-        </div>
-        <div class="service-tag">
-          <span class="mark">02 · CORPORATE</span>
-          <h3>Corporate Events</h3>
-        </div>
-        <div class="service-tag">
-          <span class="mark">03 · COMMUNITY</span>
-          <h3>Community Events</h3>
-        </div>
-        <div class="service-tag">
-          <span class="mark">04 · RESIDENCY</span>
-          <h3>Club Residencies</h3>
-        </div>
-      </div>
+<section class="light section-pad-sm">
+  <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:30px;">
+    <div>
+      <div class="eyebrow mono">Founder</div>
+      <h2 style="margin-bottom:10px;">Meet DJ Ivory P</h2>
+      <p class="taupe-text" style="max-width:480px;">Miami-raised, radio-tested, and community-rooted — read the story behind DJ Ivory Ent LLC.</p>
     </div>
-
-    <div class="crown-divider">
-      <div class="rule"></div>
-      <svg viewBox="0 0 100 70" fill="none"><path d="M5 15 L28 40 L50 5 L72 40 L95 15 L88 60 L12 60 Z" stroke="#2F6FED" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/></svg>
-      <div class="rule"></div>
-    </div>
-
-    <section class="block">
-      <div class="section-head">
-        <span class="eyebrow">Recent Highlights</span>
-        <h2>From the last few rooms we ran</h2>
-        <p>A look at recent private parties, corporate activations, community nights, and residency sets. Swap these in for real event photos and flyers whenever you're ready.</p>
-      </div>
-      <div class="strip">
-        <div class="strip-card g1"><span>Private · Wedding Reception</span></div>
-        <div class="strip-card g2"><span>Corporate · Brand Launch</span></div>
-        <div class="strip-card g3"><span>Community · Block Party</span></div>
-        <div class="strip-card g4"><span>Residency · Club Set</span></div>
-      </div>
-    </section>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="page" id="page-about">
-    <section class="block" style="padding-top:56px;">
-      <span class="eyebrow">About the Company</span>
-      <div class="about-hero" style="margin-top:14px;">
-        <div class="founder-card">
-          <img src="assets/logo-white-transparent.png" alt="DJ Ivory Ent LLC">
-          <p class="role">Founder</p>
-          <h3>DJ Ivory P</h3>
-          <p>Ivory Lewis · Miami, FL</p>
-          <p>Built DJ Ivory Ent LLC to give Hosts and DJs a real booking and management home — and to give clients one place to find the right talent for the room they're throwing.</p>
-        </div>
-        <div class="about-copy">
-          <h2 style="font-size:2.4rem; margin-bottom:16px;">Booking &amp; management, not promotion</h2>
-          <p>DJ Ivory Ent LLC is a booking and management company for Hosts and DJs — we schedule the talent, not the event itself. Whether you're planning a private celebration, a corporate stage, a community gathering, or need a resident for your club, we match the room with the right person on the mic or behind the decks.</p>
-          <p>Every Host and DJ in our roster is vetted and managed directly through us, so clients get one point of contact and consistent, professional coverage from first call to final song.</p>
-          <div class="stat-row">
-            <div class="stat"><div class="num">4</div><div class="lbl">Event Categories</div></div>
-            <div class="stat"><div class="num">1</div><div class="lbl">Point of Contact</div></div>
-            <div class="stat"><div class="num">MIA</div><div class="lbl">Home Base</div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="crown-divider">
-      <div class="rule"></div>
-      <svg viewBox="0 0 100 70" fill="none"><path d="M5 15 L28 40 L50 5 L72 40 L95 15 L88 60 L12 60 Z" stroke="#2F6FED" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/></svg>
-      <div class="rule"></div>
-    </div>
-
-    <section class="block">
-      <div class="section-head">
-        <span class="eyebrow">What We Book</span>
-        <h2>Four kinds of rooms, one roster</h2>
-      </div>
-      <div class="service-detail-grid">
-        <div class="service-detail">
-          <div class="icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5z"/></svg>
-          </div>
-          <h3>Private Events</h3>
-          <p>Weddings, birthdays, and private celebrations booked with a Host, a DJ, or both.</p>
-        </div>
-        <div class="service-detail">
-          <div class="icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V4h8v3"/></svg>
-          </div>
-          <h3>Corporate Events</h3>
-          <p>Brand activations, launches, and company functions that need a polished host or DJ.</p>
-        </div>
-        <div class="service-detail">
-          <div class="icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M4 20c1-4 4-6 8-6s7 2 8 6"/></svg>
-          </div>
-          <h3>Community Events</h3>
-          <p>Block parties, fundraisers, and neighborhood gatherings that need the right energy.</p>
-        </div>
-        <div class="service-detail">
-          <div class="icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 18V8l8-4 8 4v10"/><path d="M9 21v-6h6v6"/></svg>
-          </div>
-          <h3>Club Residencies</h3>
-          <p>Ongoing resident placements for clubs and venues that need a consistent DJ presence.</p>
-        </div>
-      </div>
-
-      <div class="egg">
-        <div>
-          <span class="eyebrow">Fair Warning</span>
-          <h3>What the P stand for?</h3>
-          <p>We get asked at every event. Book us and maybe we'll tell you.</p>
-        </div>
-        <button class="cta-btn" onclick="go('book')">Book Now</button>
-      </div>
-    </section>
-  </section>
-
-  <!-- HIGHLIGHTS -->
-  <section class="page" id="page-highlights">
-    <section class="block" style="padding-top:56px;">
-      <div class="section-head">
-        <span class="eyebrow">Event Highlights</span>
-        <h2>Flyers &amp; recaps from the field</h2>
-        <p>Browse recent event highlights by category. Replace these placeholder tiles with real event photos and flyers as they come in.</p>
-      </div>
-
-      <div class="filter-row" id="filterRow">
-        <button class="filter-pill active" data-filter="all">All</button>
-        <button class="filter-pill" data-filter="private">Private</button>
-        <button class="filter-pill" data-filter="corporate">Corporate</button>
-        <button class="filter-pill" data-filter="community">Community</button>
-        <button class="filter-pill" data-filter="residency">Residency</button>
-      </div>
-
-      <div class="gallery" id="galleryGrid">
-        <div class="gal-item p1" data-cat="private"><div class="content"><div class="tag">Private</div><div class="title">Rooftop Wedding</div></div></div>
-        <div class="gal-item p2" data-cat="corporate"><div class="content"><div class="tag">Corporate</div><div class="title">Product Launch</div></div></div>
-        <div class="gal-item p3" data-cat="community"><div class="content"><div class="tag">Community</div><div class="title">Summer Block Party</div></div></div>
-        <div class="gal-item p4" data-cat="residency"><div class="content"><div class="tag">Residency</div><div class="title">Saturday Residency</div></div></div>
-        <div class="gal-item p5" data-cat="private"><div class="content"><div class="tag">Private</div><div class="title">Milestone Birthday</div></div></div>
-        <div class="gal-item p6" data-cat="corporate"><div class="content"><div class="tag">Corporate</div><div class="title">Holiday Gala</div></div></div>
-      </div>
-
-      <div class="upload-note">Flyer and photo uploads, plus linked social posts for upcoming events, go here — this section is built to drop real images straight in.</div>
-    </section>
-  </section>
-
-  <!-- ROSTER -->
-  <section class="page" id="page-roster">
-    <section class="block" style="padding-top:56px;">
-      <div class="section-head">
-        <span class="eyebrow">The Roster</span>
-        <h2>Hosts &amp; DJs managed by DJ Ivory Ent</h2>
-        <p>Sample profile cards below — swap in real names, photos, specialties, and availability for each Host or DJ on the roster.</p>
-      </div>
-      <div class="roster-grid">
-        <div class="roster-card">
-          <div class="roster-photo rp1">DJ</div>
-          <div class="roster-info">
-            <h3>DJ Ivory P</h3>
-            <div class="specialty">Founder · Open Format / Club</div>
-            <p>Residencies, corporate stages, and private events across South Florida.</p>
-            <div class="avail"><span class="dot"></span> Booking now</div>
-          </div>
-        </div>
-        <div class="roster-card">
-          <div class="roster-photo rp2">H</div>
-          <div class="roster-info">
-            <h3>Host Placeholder</h3>
-            <div class="specialty">MC / Emcee · Corporate</div>
-            <p>Add a bio for this Host — event experience, style, and notable bookings.</p>
-            <div class="avail"><span class="dot"></span> Booking now</div>
-          </div>
-        </div>
-        <div class="roster-card">
-          <div class="roster-photo rp3">DJ</div>
-          <div class="roster-info">
-            <h3>DJ Placeholder</h3>
-            <div class="specialty">Hip-Hop / R&amp;B · Private</div>
-            <p>Add a bio for this DJ — genres, event experience, and residencies.</p>
-            <div class="avail"><span class="dot"></span> Booking now</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </section>
-
-  <!-- BOOK NOW -->
-  <section class="page" id="page-book">
-    <section class="block" style="padding-top:56px;">
-      <div class="book-grid">
-        <div class="book-side">
-          <span class="eyebrow">Book Now</span>
-          <h2>Let's staff your event</h2>
-          <p>Tell us what you're planning and we'll match you with the right Host or DJ from our roster and follow up to confirm details.</p>
-          <div class="book-steps">
-            <div class="book-step">
-              <div class="num">01</div>
-              <div><h4>Send the details</h4><p>Event type, date, and location.</p></div>
-            </div>
-            <div class="book-step">
-              <div class="num">02</div>
-              <div><h4>We match talent</h4><p>Based on your event and preferences.</p></div>
-            </div>
-            <div class="book-step">
-              <div class="num">03</div>
-              <div><h4>Confirm &amp; book</h4><p>We lock the date once details are set.</p></div>
-            </div>
-          </div>
-        </div>
-
-        <form class="booking" id="bookingForm">
-          <div class="success-msg" id="successMsg">Thanks — your request is in. We'll follow up shortly to confirm details.</div>
-          <div class="form-row">
-            <div class="field">
-              <label for="fname">Full Name</label>
-              <input type="text" id="fname" required placeholder="Your name">
-            </div>
-            <div class="field">
-              <label for="femail">Email</label>
-              <input type="email" id="femail" required placeholder="you@email.com">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field">
-              <label for="fphone">Phone</label>
-              <input type="tel" id="fphone" placeholder="(305) 000-0000">
-            </div>
-            <div class="field">
-              <label for="fdate">Event Date</label>
-              <input type="date" id="fdate">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field">
-              <label for="fevent">Event Type</label>
-              <select id="fevent">
-                <option>Private Event</option>
-                <option>Corporate Event</option>
-                <option>Community Event</option>
-                <option>Club Residency</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="ftalent">Preference</label>
-              <select id="ftalent">
-                <option>No preference</option>
-                <option>Host / MC</option>
-                <option>DJ</option>
-                <option>Host + DJ</option>
-              </select>
-            </div>
-          </div>
-          <div class="field full" style="margin-bottom:16px;">
-            <label for="flocation">Event Location</label>
-            <input type="text" id="flocation" placeholder="Venue or city">
-          </div>
-          <div class="field full" style="margin-bottom:16px;">
-            <label for="fmessage">Event Details</label>
-            <textarea id="fmessage" placeholder="Tell us about the event — guest count, hours, vibe, anything we should know."></textarea>
-          </div>
-          <button type="submit" class="submit-btn">Send Booking Request</button>
-          <p class="form-note">This form is a front-end template — connect it to email or a database to start receiving live requests.</p>
-        </form>
-      </div>
-    </section>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="page" id="page-contact">
-    <section class="block" style="padding-top:56px;">
-      <div class="section-head">
-        <span class="eyebrow">Contact</span>
-        <h2>Get in touch</h2>
-        <p>Questions about booking, the roster, or partnering with DJ Ivory Ent LLC — reach out below.</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info-card">
-          <h3>DJ Ivory Ent LLC</h3>
-          <div class="contact-line">
-            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h4l2 5-2.5 1.5a11 11 0 0 0 5 5L13 14l5 2v4a2 2 0 0 1-2 2C8.6 22 2 15.4 2 7a2 2 0 0 1 2-2z"/></svg></span>
-            <div><div class="lbl2">Phone</div><div class="val">Add booking phone number</div></div>
-          </div>
-          <div class="contact-line">
-            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg></span>
-            <div><div class="lbl2">Email</div><div class="val">bookings@djivoryent.com</div></div>
-          </div>
-          <div class="contact-line">
-            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
-            <div><div class="lbl2">Based In</div><div class="val">Miami, FL</div></div>
-          </div>
-
-          <div class="social-block">
-            <span class="eyebrow">Follow the roster</span>
-            <div class="social-row">
-              <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-              <a href="#" aria-label="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 3v10.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 3c0 2.5 2 4.5 4.5 4.5"/></svg></a>
-              <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M15 4h-2a4 4 0 0 0-4 4v2H7v3h2v7h3v-7h2.5l.5-3H12V8a1 1 0 0 1 1-1h2z"/></svg></a>
-            </div>
-          </div>
-        </div>
-
-        <form class="booking" id="contactForm" style="background:var(--ice);">
-          <div class="field full" style="margin-bottom:16px;">
-            <label for="cname">Name</label>
-            <input type="text" id="cname" required placeholder="Your name">
-          </div>
-          <div class="field full" style="margin-bottom:16px;">
-            <label for="cemail">Email</label>
-            <input type="email" id="cemail" required placeholder="you@email.com">
-          </div>
-          <div class="field full" style="margin-bottom:16px;">
-            <label for="cmessage">Message</label>
-            <textarea id="cmessage" placeholder="How can we help?"></textarea>
-          </div>
-          <button type="submit" class="submit-btn">Send Message</button>
-        </form>
-      </div>
-    </section>
-  </section>
-
-</main>
+    <a href="about.html" class="btn-secondary" style="border-color:rgba(10,21,38,0.2); color:var(--ink);">Read the Full Bio</a>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          <img src="assets/logo-white-transparent.png" alt="DJ Ivory Ent LLC">
-        </div>
-        <p>Booking &amp; management for Hosts and DJs — Private, Corporate, Community, and Club Residency events out of Miami, FL.</p>
-      </div>
-      <div>
-        <h4>Site</h4>
-        <ul>
-          <li><a href="#" onclick="go('home')">Home</a></li>
-          <li><a href="#" onclick="go('about')">About</a></li>
-          <li><a href="#" onclick="go('highlights')">Highlights</a></li>
-          <li><a href="#" onclick="go('roster')">Roster</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Book</h4>
-        <ul>
-          <li><a href="#" onclick="go('book')">Book Now</a></li>
-          <li><a href="#" onclick="go('contact')">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Follow</h4>
-        <div class="social-row">
-          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B9C8EE" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="#" aria-label="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B9C8EE" stroke-width="2"><path d="M14 3v10.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 3c0 2.5 2 4.5 4.5 4.5"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B9C8EE" stroke-width="2"><path d="M15 4h-2a4 4 0 0 0-4 4v2H7v3h2v7h3v-7h2.5l.5-3H12V8a1 1 0 0 1 1-1h2z"/></svg></a>
-        </div>
-      </div>
+    <div>
+      <div class="logo">DJ <span class="accent">Ivory</span> Ent</div>
+      <div class="foot-note">DJ Ivory Ent LLC — Booking &amp; Management for Hosts and DJs</div>
     </div>
-    <div class="foot-bottom">
-      <span>© <span id="year"></span> DJ Ivory Ent LLC. All rights reserved.</span>
-      <span>Miami, FL</span>
+    <div class="foot-links">
+      <a href="about.html">About</a>
+      <a href="event-highlight.html">Event Highlight</a>
+      <a href="roster.html">Roster</a>
+      <a href="book.html">Book Now</a>
+      <a href="contact.html">Contact</a>
+      <a href="dashboard.html">Dashboard</a>
     </div>
   </div>
 </footer>
 
 <script>
-  // ---------------------------------------------------------------
-  // SUPABASE CONFIG — paste your project values here.
-  // Find these in Supabase: Project Settings -> API
-  //   SUPABASE_URL  -> "Project URL"
-  //   SUPABASE_ANON_KEY -> "anon public" key (safe to expose client-side)
-  // Run supabase-schema.sql (included in the download) in the Supabase
-  // SQL editor first to create the two tables this form writes to.
-  // ---------------------------------------------------------------
-  const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
-  const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
-  let supabaseClient = null;
-  if (SUPABASE_URL !== "YOUR_SUPABASE_PROJECT_URL" && window.supabase) {
-    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  }
-
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  function go(pageId){
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page-' + pageId).classList.add('active');
-    document.querySelectorAll('nav.links button[data-page]').forEach(b => {
-      b.classList.toggle('active', b.dataset.page === pageId);
-    });
-    window.scrollTo({top:0, behavior:'instant'});
-    history.replaceState(null, '', '#' + pageId);
-    document.getElementById('mobileMenu').style.display = 'none';
-  }
-
-  // init from hash
-  const initial = (location.hash || '#home').replace('#','');
-  const valid = ['home','about','highlights','roster','book','contact'];
-  go(valid.includes(initial) ? initial : 'home');
-
-  // mobile menu toggle
-  document.getElementById('burgerBtn').addEventListener('click', () => {
-    const m = document.getElementById('mobileMenu');
-    m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
-  });
-
-  // gallery filter
-  document.getElementById('filterRow').addEventListener('click', (e) => {
-    const btn = e.target.closest('.filter-pill');
-    if(!btn) return;
-    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    document.querySelectorAll('.gal-item').forEach(item => {
-      item.style.display = (filter === 'all' || item.dataset.cat === filter) ? 'flex' : 'none';
-    });
-  });
-
-  // booking form
-  document.getElementById('bookingForm').addEventListener('submit', async function(e){
-    e.preventDefault();
-    const submitBtn = this.querySelector('.submit-btn');
-    const payload = {
-      full_name: document.getElementById('fname').value,
-      email: document.getElementById('femail').value,
-      phone: document.getElementById('fphone').value,
-      event_date: document.getElementById('fdate').value || null,
-      event_type: document.getElementById('fevent').value,
-      talent_preference: document.getElementById('ftalent').value,
-      location: document.getElementById('flocation').value,
-      message: document.getElementById('fmessage').value
-    };
-
-    if (!supabaseClient) {
-      // Fallback: no Supabase configured yet, just show local confirmation
-      document.getElementById('successMsg').style.display = 'block';
-      this.reset();
-      return;
+  (function(){
+    var el = document.getElementById('keys');
+    var n = 48;
+    for (var i = 0; i < n; i++){
+      var t = i / (n - 1);
+      var h = 20 + Math.abs(Math.sin(t * Math.PI * 2.2)) * 70 + (t > 0.55 ? (t-0.55)*90 : 0);
+      var k = document.createElement('div');
+      k.className = 'key';
+      k.style.height = Math.min(h, 100) + '%';
+      el.appendChild(k);
     }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-    const { error } = await supabaseClient.from('booking_requests').insert([payload]);
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Send Booking Request';
-
-    if (error) {
-      alert('Something went wrong sending your request. Please try again or reach out directly.');
-      console.error(error);
-      return;
-    }
-    document.getElementById('successMsg').style.display = 'block';
-    this.reset();
-  });
-
-  // contact form
-  document.getElementById('contactForm').addEventListener('submit', async function(e){
-    e.preventDefault();
-    const submitBtn = this.querySelector('.submit-btn');
-    const payload = {
-      name: document.getElementById('cname').value,
-      email: document.getElementById('cemail').value,
-      message: document.getElementById('cmessage').value
-    };
-
-    if (!supabaseClient) {
-      alert('Thanks — your message is ready to send. Connect Supabase to receive it live.');
-      this.reset();
-      return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-    const { error } = await supabaseClient.from('contact_messages').insert([payload]);
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Send Message';
-
-    if (error) {
-      alert('Something went wrong sending your message. Please try again or reach out directly.');
-      console.error(error);
-      return;
-    }
-    alert('Thanks — your message has been sent.');
-    this.reset();
-  });
+  })();
 </script>
 
 </body>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Now — DJ Ivory Ent LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js"></script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="logo">DJ <span class="accent">Ivory</span> Ent</a>
+    <input type="checkbox" id="nav-check" class="nav-check">
+    <label for="nav-check" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="event-highlight.html">Event Highlight</a>
+      <a href="roster.html">Roster</a>
+      <a href="book.html" aria-current="page">Book Now</a>
+      <a href="contact.html">Contact</a>
+      <a href="dashboard.html">Dashboard</a>
+    </div>
+    <a href="book.html" class="nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <div class="eyebrow mono">Book Now</div>
+    <h1>Let's schedule your Host or DJ.</h1>
+    <p class="lead">Fill in as much as you can. We'll follow up to confirm availability, match a Host or DJ, and send a booking agreement.</p>
+  </div>
+</header>
+
+<section class="section-pad">
+  <div class="wrap" style="max-width:760px;">
+    <form id="booking-form">
+      <div class="form-row">
+        <div>
+          <label class="mono">Full Name</label>
+          <input type="text" id="full_name" placeholder="Your name" required>
+        </div>
+        <div>
+          <label class="mono">Email or Phone</label>
+          <input type="text" id="contact" placeholder="How to reach you" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label class="mono">Event Type</label>
+          <select id="event_type" required>
+            <option value="" selected disabled>Select one</option>
+            <option>Private Event</option>
+            <option>Corporate Event</option>
+            <option>Community Event</option>
+            <option>Club Residency</option>
+          </select>
+        </div>
+        <div>
+          <label class="mono">Event Date</label>
+          <input type="date" id="event_date" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label class="mono">Venue / Location</label>
+          <input type="text" id="venue" placeholder="Venue name and city">
+        </div>
+        <div>
+          <label class="mono">Estimated Guest Count</label>
+          <input type="text" id="guest_count" placeholder="e.g. 50–75 guests">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label class="mono">Requested Host / DJ</label>
+          <select id="requested_host">
+            <option value="" selected>No preference</option>
+            <option>DJ Ivory P</option>
+          </select>
+        </div>
+        <div>
+          <label class="mono">Budget Range</label>
+          <select id="budget_range">
+            <option value="" selected disabled>Select a range</option>
+            <option>Under $500</option>
+            <option>$500 – $1,000</option>
+            <option>$1,000 – $2,500</option>
+            <option>$2,500+</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="mono">Event Details</label>
+        <textarea id="details" placeholder="Tell us about the event — timeline, music style, hosting needs, anything else we should know"></textarea>
+      </div>
+
+      <p id="booking-status" style="font-size:0.85rem; color:var(--taupe); display:none;"></p>
+      <button type="submit" class="submit-btn">Send Booking Request</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="logo">DJ <span class="accent">Ivory</span> Ent</div>
+      <div class="foot-note">DJ Ivory Ent LLC — Booking &amp; Management for Hosts and DJs</div>
+    </div>
+    <div class="foot-links">
+      <a href="about.html">About</a>
+      <a href="event-highlight.html">Event Highlight</a>
+      <a href="roster.html">Roster</a>
+      <a href="book.html">Book Now</a>
+      <a href="contact.html">Contact</a>
+      <a href="dashboard.html">Dashboard</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('booking-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var btn = this.querySelector('.submit-btn');
+  var status = document.getElementById('booking-status');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  var payload = {
+    full_name: document.getElementById('full_name').value,
+    contact: document.getElementById('contact').value,
+    event_type: document.getElementById('event_type').value,
+    event_date: document.getElementById('event_date').value || null,
+    venue: document.getElementById('venue').value,
+    guest_count: document.getElementById('guest_count').value,
+    requested_host: document.getElementById('requested_host').value,
+    budget_range: document.getElementById('budget_range').value,
+    details: document.getElementById('details').value
+  };
+
+  try {
+    var result = await supabaseClient.from('bookings').insert([payload]);
+    if (result.error) throw result.error;
+    btn.textContent = 'Booking Request Sent';
+    status.style.display = 'block';
+    status.textContent = "Thanks — we'll follow up shortly to confirm availability.";
+    this.reset();
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Send Booking Request';
+    status.style.display = 'block';
+    status.style.color = '#B85C5C';
+    status.textContent = 'Something went wrong sending your request. Please try again or email us directly.';
+    console.error(err);
+  }
+});
+</script>
+
+</body>
+</html>
