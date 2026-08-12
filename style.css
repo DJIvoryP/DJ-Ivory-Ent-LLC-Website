@@ -58,14 +58,12 @@ nav .wrap{
   height:76px;
 }
 .logo{
-  font-family:'Fraunces', serif;
-  font-size:1.3rem;
-  letter-spacing:0.02em;
-  display:flex; align-items:baseline; gap:8px;
-  -webkit-text-stroke: 1px var(--taupe);
-  text-stroke: 1px var(--taupe);
+  display:flex; align-items:center;
 }
-.logo .accent{color:var(--gold);}
+.logo img{
+  height:46px; width:auto; display:block;
+  filter:invert(1);
+}
 .nav-links{display:flex; gap:30px; font-size:0.78rem;}
 .nav-links a{
   font-family:'Manrope',sans-serif;
