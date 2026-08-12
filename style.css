@@ -413,6 +413,7 @@ footer .logo{font-size:1.05rem;}
   .hero-inner{grid-template-columns:1fr;}
   .eq-panel{height:200px;}
   .card-grid{grid-template-columns:1fr 1fr;}
+  .card-grid.cols-3{grid-template-columns:1fr 1fr;}
   .flow{grid-template-columns:1fr 1fr; row-gap:34px;}
   .contact-grid{grid-template-columns:1fr;}
   .form-row, .form-row.three{grid-template-columns:1fr;}
@@ -426,6 +427,7 @@ footer .logo{font-size:1.05rem;}
 }
 @media (max-width: 520px){
   .card-grid{grid-template-columns:1fr;}
+  .card-grid.cols-3{grid-template-columns:1fr;}
   .flow{grid-template-columns:1fr;}
   .wrap{padding:0 22px;}
   .roster-card{flex-direction:column;}
