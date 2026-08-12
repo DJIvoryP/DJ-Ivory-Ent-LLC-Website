@@ -340,6 +340,35 @@ section{position:relative;}
   display:inline-block; margin-top:10px; font-size:0.65rem; text-transform:uppercase;
   letter-spacing:0.05em; padding:4px 10px; border:1px solid var(--gold); color:var(--gold-bright);
 }
+.recap-link{
+  display:inline-block; margin-top:12px; font-size:0.78rem; font-weight:700;
+  color:var(--gold-bright); text-transform:uppercase; letter-spacing:0.05em;
+}
+.recap-link:hover{ text-decoration:underline; }
+
+/* RECAP / GALLERY PAGES */
+.recap-cover{
+  width:100%; max-width:420px; border:1px solid var(--line); margin-bottom:8px;
+}
+.recap-meta{
+  display:flex; flex-wrap:wrap; gap:24px; margin:26px 0 8px;
+}
+.recap-meta div .lbl{ font-size:0.66rem; color:var(--gold-bright); margin-bottom:6px; }
+.recap-meta div .val{ font-size:0.95rem; color:var(--ivory-soft); }
+.photo-gallery{
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:14px;
+}
+.photo-gallery a{ display:block; aspect-ratio:4/3; overflow:hidden; border:1px solid var(--line); }
+.photo-gallery img{
+  width:100%; height:100%; object-fit:cover; transition:transform 0.3s ease;
+}
+.photo-gallery a:hover img{ transform:scale(1.05); }
+@media (max-width: 880px){
+  .photo-gallery{ grid-template-columns:repeat(2, 1fr); }
+}
+@media (max-width: 520px){
+  .photo-gallery{ grid-template-columns:1fr 1fr; gap:8px; }
+}
 
 /* CONTACT / FORMS */
 .contact-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; }
