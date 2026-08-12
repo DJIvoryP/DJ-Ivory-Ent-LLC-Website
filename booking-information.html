@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book Now — DJ Ivory Ent LLC</title>
+<title>Booking Information — DJ Ivory Ent LLC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -22,25 +22,45 @@
       <a href="about.html">About</a>
       <a href="event-highlight.html">Event Highlight</a>
       <a href="roster.html">Roster</a>
-      <a href="book.html" aria-current="page">Book Now</a>
-      <a href="contact.html">Contact</a>
+      <a href="booking-information.html" aria-current="page">Booking Information</a>
       <a href="listen.html">Ways to Listen</a>
     </div>
-    <a href="book.html" class="nav-cta">Book Now</a>
+    <a href="booking-information.html" class="nav-cta">Book Now</a>
   </div>
 </nav>
 
 <header class="page-hero">
   <div class="hero-bg"></div>
   <div class="wrap">
-    <div class="eyebrow mono">Book Now</div>
-    <h1>Let's schedule your Host or DJ.</h1>
-    <p class="lead">Fill in as much as you can. We'll follow up to confirm availability, match a Host or DJ, and send a booking agreement.</p>
+    <div class="eyebrow mono">Booking Information</div>
+    <h1>Let's plan your event — or just say hello.</h1>
+    <p class="lead">Fill in as much as you can for a specific date, or send a general question. Either way, we'll follow up directly.</p>
   </div>
 </header>
 
 <section class="section-pad">
-  <div class="wrap" style="max-width:760px;">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <h2>Get in touch.</h2>
+      <p>For booking a Host or DJ, roster availability, or anything else — use the details below or send the form.</p>
+      <div class="contact-detail">
+        <div class="lbl mono">Business</div>
+        <div class="val">DJ Ivory Ent LLC</div>
+      </div>
+      <div class="contact-detail">
+        <div class="lbl mono">Based In</div>
+        <div class="val">Miami, Florida</div>
+      </div>
+      <div class="contact-detail">
+        <div class="lbl mono">Services</div>
+        <div class="val">Host &amp; DJ Booking and Management</div>
+      </div>
+      <div class="contact-detail">
+        <div class="lbl mono">Books For</div>
+        <div class="val">Private · Corporate · Community · Club Residencies</div>
+      </div>
+    </div>
+
     <form id="booking-form">
       <div class="form-row">
         <div>
@@ -56,8 +76,8 @@
       <div class="form-row">
         <div>
           <label class="mono">Event Type</label>
-          <select id="event_type" required>
-            <option value="" selected disabled>Select one</option>
+          <select id="event_type">
+            <option value="" selected>General question</option>
             <option>Private Event</option>
             <option>Corporate Event</option>
             <option>Community Event</option>
@@ -66,7 +86,7 @@
         </div>
         <div>
           <label class="mono">Event Date</label>
-          <input type="date" id="event_date" required>
+          <input type="date" id="event_date">
         </div>
       </div>
 
@@ -103,12 +123,12 @@
       </div>
 
       <div>
-        <label class="mono">Event Details</label>
-        <textarea id="details" placeholder="Tell us about the event — timeline, music style, hosting needs, anything else we should know"></textarea>
+        <label class="mono">Message</label>
+        <textarea id="details" placeholder="Tell us about the event — or what you'd like to ask" required></textarea>
       </div>
 
       <p id="booking-status" style="font-size:0.85rem; color:var(--taupe); display:none;"></p>
-      <button type="submit" class="submit-btn">Send Booking Request</button>
+      <button type="submit" class="submit-btn">Send Request</button>
     </form>
   </div>
 </section>
@@ -123,8 +143,7 @@
       <a href="about.html">About</a>
       <a href="event-highlight.html">Event Highlight</a>
       <a href="roster.html">Roster</a>
-      <a href="book.html">Book Now</a>
-      <a href="contact.html">Contact</a>
+      <a href="booking-information.html">Booking Information</a>
       <a href="listen.html">Ways to Listen</a>
     </div>
   </div>
@@ -147,19 +166,19 @@ document.getElementById('booking-form').addEventListener('submit', async functio
     guest_count: document.getElementById('guest_count').value,
     requested_host: document.getElementById('requested_host').value,
     budget_range: document.getElementById('budget_range').value,
-    details: document.getElementById('details').value
+    message: document.getElementById('details').value
   };
 
   try {
-    var result = await supabaseClient.from('bookings').insert([payload]);
+    var result = await supabaseClient.from('booking_requests').insert([payload]);
     if (result.error) throw result.error;
-    btn.textContent = 'Booking Request Sent';
+    btn.textContent = 'Request Sent';
     status.style.display = 'block';
-    status.textContent = "Thanks — we'll follow up shortly to confirm availability.";
+    status.textContent = "Thanks — we'll follow up shortly.";
     this.reset();
   } catch (err) {
     btn.disabled = false;
-    btn.textContent = 'Send Booking Request';
+    btn.textContent = 'Send Request';
     status.style.display = 'block';
     status.style.color = '#B85C5C';
     status.textContent = 'Something went wrong sending your request. Please try again or email us directly.';
