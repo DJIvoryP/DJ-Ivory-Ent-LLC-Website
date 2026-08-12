@@ -22,6 +22,12 @@ h1,h2,h3{
   font-family:'Fraunces', serif;
   font-weight:500;
   letter-spacing:-0.01em;
+  -webkit-text-stroke: 1px var(--taupe);
+  text-stroke: 1px var(--taupe);
+}
+.light h1, .light h2, .light h3{
+  -webkit-text-stroke: 0;
+  text-stroke: 0;
 }
 .mono{
   font-family:'IBM Plex Mono', monospace;
@@ -56,6 +62,8 @@ nav .wrap{
   font-size:1.3rem;
   letter-spacing:0.02em;
   display:flex; align-items:baseline; gap:8px;
+  -webkit-text-stroke: 1px var(--taupe);
+  text-stroke: 1px var(--taupe);
 }
 .logo .accent{color:var(--gold);}
 .nav-links{display:flex; gap:30px; font-size:0.78rem;}
@@ -263,6 +271,10 @@ section{position:relative;}
   background:linear-gradient(160deg, var(--gold-bright), var(--burgundy));
   display:flex; align-items:center; justify-content:center;
   font-family:'Fraunces', serif; font-size:1.6rem; color:var(--ivory-soft);
+  overflow:hidden;
+}
+.roster-avatar img{
+  width:100%; height:100%; object-fit:cover;
 }
 .roster-card h3{ font-size:1.3rem; color:var(--ink); margin-bottom:4px; }
 .roster-role{ font-size:0.78rem; color:var(--gold); margin-bottom:12px; display:block; }
@@ -289,6 +301,10 @@ section{position:relative;}
   display:flex; align-items:center; justify-content:center;
   font-family:'Fraunces', serif; color:var(--gold-bright); font-size:1.4rem; text-align:center;
   padding:20px;
+  overflow:hidden;
+}
+.bio-portrait img{
+  width:100%; height:100%; object-fit:cover;
 }
 .bio-copy h2{ font-size:1.5rem; margin:36px 0 14px; color:var(--ivory-soft); }
 .bio-copy h2:first-child{margin-top:0;}
