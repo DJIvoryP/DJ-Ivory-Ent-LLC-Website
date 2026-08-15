@@ -13,8 +13,8 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-const FROM_EMAIL = "DJ Ivory Ent LLC <bookings@djivoryentllc.com>";
-const TO_EMAIL = "ilewisII@djivoryentllc.com";
+const FROM_EMAIL = "DJ Ivory P <bookings@djivoryp.com>";
+const TO_EMAIL = "IPLewisII@djivoryp.com";
 const CC_EMAIL = "djivoryentllc@gmail.com";
 
 const CORS_HEADERS = {
