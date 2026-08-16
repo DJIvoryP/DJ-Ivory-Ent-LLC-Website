@@ -56,6 +56,13 @@ serve(async (req) => {
       <table style="border-collapse:collapse;">${rows}</table>
     `;
 
+    // If the "contact" field they typed looks like an email address, set it
+    // as Reply-To so hitting Reply in your inbox goes straight to them.
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const replyTo = emailPattern.test((record.contact ?? "").trim())
+      ? record.contact.trim()
+      : undefined;
+
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -66,6 +73,7 @@ serve(async (req) => {
         from: FROM_EMAIL,
         to: [TO_EMAIL],
         cc: [CC_EMAIL],
+        ...(replyTo ? { reply_to: replyTo } : {}),
         subject: `New booking request from ${record.full_name ?? "website"}`,
         html,
       }),
