@@ -37,6 +37,7 @@ serve(async (req) => {
       ["Contact", record.contact],
       ["Event Type", record.event_type],
       ["Event Date", record.event_date],
+      ["Event Time", record.event_time],
       ["Venue", record.venue],
       ["Guest Count", record.guest_count],
       ["Requested Host", record.requested_host],

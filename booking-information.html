@@ -74,7 +74,7 @@
         </div>
       </div>
 
-      <div class="form-row">
+      <div class="form-row three">
         <div>
           <label class="mono">Event Type</label>
           <select id="event_type">
@@ -88,6 +88,10 @@
         <div>
           <label class="mono">Event Date</label>
           <input type="date" id="event_date">
+        </div>
+        <div>
+          <label class="mono">Event Time</label>
+          <input type="time" id="event_time">
         </div>
       </div>
 
@@ -164,6 +168,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
     contact: document.getElementById('contact').value,
     event_type: document.getElementById('event_type').value,
     event_date: document.getElementById('event_date').value || null,
+    event_time: document.getElementById('event_time').value || null,
     venue: document.getElementById('venue').value,
     guest_count: document.getElementById('guest_count').value,
     requested_host: document.getElementById('requested_host').value,
