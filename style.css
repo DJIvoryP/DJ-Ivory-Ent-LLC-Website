@@ -191,11 +191,18 @@ nav .wrap{
 /* HERO PORTRAIT */
 .hero-portrait{
   position:relative; z-index:2;
-  height:480px; border:1px solid var(--line);
+  aspect-ratio: 2 / 3; border:1px solid var(--line);
   overflow:hidden;
 }
 .hero-portrait img{
-  width:100%; height:100%; object-fit:cover; object-position:top center;
+  width:100%; height:100%; object-fit:cover; object-position:center;
+}
+.hero-portrait-placeholder{
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(160deg, var(--ink-soft), var(--burgundy) 65%, var(--gold) 140%);
+}
+.hero-portrait-placeholder .hero-placeholder-logo{
+  width:42%; height:auto; object-fit:contain; opacity:0.92; filter:invert(1);
 }
 
 /* SIGNATURE DIVIDER */
@@ -404,7 +411,7 @@ footer .logo{font-size:1.05rem;}
 
 @media (max-width: 880px){
   .hero-inner{grid-template-columns:1fr;}
-  .hero-portrait{height:320px;}
+  .hero-portrait{max-width:420px; margin:0 auto;}
   .card-grid{grid-template-columns:1fr 1fr;}
   .card-grid.cols-3{grid-template-columns:1fr 1fr;}
   .flow{grid-template-columns:1fr 1fr; row-gap:34px;}
